@@ -1,3 +1,4 @@
+-- garrysmod\lua\autorun\server
 hook.Add( 'PreventFadingDoorDudos', 'FadingDoorDudos', function( ent, owner )
 	local colliding = ents.FindInSphere(ent:LocalToWorld(ent:OBBCenter()), ent:BoundingRadius())
 	for k,v in pairs( colliding ) do
