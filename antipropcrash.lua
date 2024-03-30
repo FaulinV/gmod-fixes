@@ -1,4 +1,4 @@
-
+-- garrysmod\lua\autorun\server
 local nodamage = {
 	prop_fix		= true,
 	prop_physics 	= true,
