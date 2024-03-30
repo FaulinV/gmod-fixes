@@ -11,7 +11,7 @@ local nodamage = {
 	gmod_cameraprop = true,
 	gmod_emitter 	= true,
 	gmod_light 		= true,
-	keypad          = true,
+	keypad          = true, -- If you have another keypad addon change the name
     gmod_poly       = true,
     ent_picture 	= true
 }
@@ -29,19 +29,19 @@ local nocolide = {
 }
 
 
-hook.Add('PlayerShouldTakeDamage', 'AntiPK_PlayerShouldTakeDamage', function(victim, attacker)
+hook.Add('PlayerShouldTakeDamage', 'AntiPK_PlayerShouldTakeDamage', function(victim, attacker) -- Anti Vehicle Damage
 	if nodamage[attacker:GetClass()] or victim:IsPlayer() and attacker:IsVehicle() then 
 		return false
 	end
 end)
 
-hook.Add('EntityTakeDamage', 'AntiPK.EntityTakeDamage', function(pl, dmginfo)
+hook.Add('EntityTakeDamage', 'AntiPK.EntityTakeDamage', function(pl, dmginfo) -- Anti Entity Damage
 	if (dmginfo:GetDamageType() == DMG_CRUSH) then
 		return true
 	end
 end)
 
-hook.Add('ShouldCollide', 'AntiPK_NoColide', function(ent1, ent2)
+hook.Add('ShouldCollide', 'AntiPK_NoColide', function(ent1, ent2) -- No collide
 	if IsValid(ent1) and IsValid(ent2) and nocolide[ent1:GetClass()] and nocolide[ent2:GetClass()] then
 		return false
 	end
